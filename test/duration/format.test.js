@@ -35,6 +35,11 @@ test("Duration#toISO fills out every field with fractional", () => {
   expect(dur.toISO()).toBe("P1.1Y2.2M1.1W3.3DT4.4H5.5M6.607S");
 });
 
+test.only("Duration#toISO creates a minimal string", () => {
+  console.log("Duration", Duration.fromObject({ hour: 2.4 }).values);
+  expect(Duration.fromObject({ hour: 2.4 }).toFormat("hh:mm")).toBe("2:24");
+});
+
 test("Duration#toISO creates a minimal string", () => {
   expect(Duration.fromObject({ years: 3, seconds: 45 }).toISO()).toBe("P3YT45S");
   expect(Duration.fromObject({ months: 4, seconds: 45 }).toISO()).toBe("P4MT45S");
