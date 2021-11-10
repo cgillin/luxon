@@ -385,6 +385,20 @@ export default class Formatter {
         []
       ),
       collapsed = dur.shiftTo(...realTokens.map(tokenToField).filter((t) => t));
+
+    // dur: Duration {
+    //   values: { hours: 2.4 },
+    // ...
+    console.log("dur", dur);
+
+    // realTokens: [ 'hh', ':', 'mm' ]
+    console.log("realTokens", realTokens);
+
+    // collapsed: Duration {
+    //   values: { hours: 2, minutes: 23.999999999999993 },
+    // ...
+    console.log("collapsed", collapsed);
+
     return stringifyTokens(tokens, tokenToString(collapsed));
   }
 }

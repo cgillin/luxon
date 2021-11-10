@@ -22,6 +22,12 @@ const dt = DateTime.fromObject(
 // #toFormat()
 //------
 
+test.only("toFormat from hours", () => {
+  console.log("dt.set", dt.set({ hour: 2.4 }));
+  expect(dt.set({ hour: 2.4 }));
+  expect(dt.set({ hour: 2.4 }).toFormat("hh:mm")).toBe("02:24");
+});
+
 test("DateTime#toFormat accepts the locale from the DateTime or the options", () => {
   expect(dt.setLocale("fr").toFormat("LLLL")).toBe("mai");
   expect(dt.toFormat("LLLL", { locale: "fr" })).toBe("mai");

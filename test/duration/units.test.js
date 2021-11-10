@@ -17,6 +17,11 @@ test("Duration#shiftTo boils hours down milliseconds", () => {
   expect(dur.milliseconds).toBe(3600000);
 });
 
+test.only("Duration#shiftTo hours with decimal", () => {
+  const dur = Duration.fromObject({ hours: 2.4 }).shiftTo("hour", "minute");
+  expect(dur.values).toBe({ hours: 2, minutes: 24 });
+});
+
 test("Duration boils hours down shiftTo minutes and milliseconds", () => {
   const dur = Duration.fromObject({ hours: 1, seconds: 30 }).shiftTo("minutes", "milliseconds");
   expect(dur.toObject()).toEqual({ minutes: 60, milliseconds: 30000 });

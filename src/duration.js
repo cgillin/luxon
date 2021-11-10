@@ -420,6 +420,8 @@ export default class Duration {
       ...opts,
       floor: opts.round !== false && opts.floor !== false,
     };
+
+    console.log("this", this);
     return this.isValid
       ? Formatter.create(this.loc, fmtOpts).formatDurationFromString(this, fmt)
       : INVALID;
@@ -714,6 +716,10 @@ export default class Duration {
         accumulated[k] = vals[k];
       }
     }
+
+    // For hour: 2.4 test case --
+    //    accumulated { hours: 0, minutes: 0.9999999999999929 }
+    console.log("accumulated", accumulated);
 
     // anything leftover becomes the decimal for the last unit
     // lastUnit must be defined since units is not empty
